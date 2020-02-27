@@ -1,30 +1,93 @@
 ---
 title: "A Look At The Wage Gap"
-author: "Kaamna Rishi, Lynsley Kolakowski, Locksley Kolakowski"
+author: "Kaamna Rishi, Lynsley Kolakowski, Locksley Kolakowski, Group E4"
 date: "2/26/2020"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+source("analysis.R")
+library("knitr")
 ```
 
-## R Markdown
+## Section 1. Problem Domain Description
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+The gender wage gap or pay gap is the average difference in salary for men and women working for certain companies or in certain industries. Due to a history of patriarchal societies globally where it was forbidden for women to attain certain rights and privileges through a social hierarchy, the effect has left us with a contemporary era where women have attained the right to work and make a living but the inequality is rooted within the amount of money women get paid while doing equal or more work than their other gender counterparts. What is *specific* to our report is helping the public understand this gap within the technology industry with variables such as location, companies, and education in comparison with average salary data from around the world. This domain is worth analyzing because **we are living in a generation where conversations on possible solutions to wage inequalities are being initiated, but literal action has yet to be taken within our governments and societies.** Especially in the technological industry, one of the highest paying industries and with the fastest expansion all over the world,  equal pay is something that has not been quickly prioritized. In this report, we will explain the urgency that needs to be after the priority of equal pay across genders through understanding the average wages of countries and average wages in the technology industry.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
+### Subsection 1.1 Analysis Questions
+Here we will be describing what questions we will be further exploring through our data wrangling in our future report on the wage gap.
+
+Kaamna:
+
+	**What is the difference between net income of an average person in the United States compared to a woman working for a Technology company in the U.S.?**
+I believe this question is important to understand the average income of a person regardless of gender in the United States compared to a woman’s income from a company that promises the most diversity and inclusion in their hiring and treatment of employees. This will help prove if Microsoft is an equal opportunity employer and is committed to equal pay amongst all genders.
+
+
+Lynzley:
+
+	**Does location affect the global wage gap both within and outside of the tech industry?**
+I believe this question is important because it will help us understand if location correlates to the size of the gender wage gap, and if there are differences within regions depending on individuals working in or outside of the tech industry. This will help prove if there are key locations where the wage gap is more prevalent and if technology companies are really providing equal opportunities to people regardless of gender.
+
+
+Locksley:
+
+**Does education level affect the average compensation between different genders?**
+I believe this question is important because it can help indicate whether different education levels determine pay in the tech industry. This is really important because it can help future students planning on pursuing a career in technology make informed decisions on if making the monetary and time commitment to pursuing higher education will affect their compensation once they enter the industry. Furthermore, it will indicate whether men and women experience inequalities in their education level and compensation, hopefully providing evidence towards the gender pay gap.
+
+
+
+## Section 2. Data Description
+
+Here we will be further exloring and explaining our data sets and how we have chosen them, then we will wrangle and display an overview of our summary analysis.
+
+### Reddit Tech Data
+
+##### Question One
+The Reddit Tech Salary Sheet is a dataset detailing the salary, company, location, gender, and more of people who chose to share their information who work in the tech industry.
+
+##### Question Two
+The dataset was created from a user on Reddit, a social media website where the users stay anonymous. The user made the data set using  Google Sheets where anyone with the link could input information. I found the source and a csv to download from this link: https://www.reddit.com/r/sysadmin/comments/d2g4hm/reddit_tech_salary_sheet/, and you can view the dataset here: https://docs.google.com/spreadsheets/d/13icckT8wb2ME3FTzgGyokoCTQMU9kBMqQXvg0V3_x54/edit#gid=880492180. The most important thing to keep in mind with this dataset is since it was created through open contributions, it relies on the goodwill and honesty of the contributors to stay honest and accurate. Also, as more people add data, the current csv file we are using will become out of date.
+
+##### Question Three
+
+```{r tech_salary_sample, echo=FALSE}
+kable(tech_salary_sample)
 ```
 
-## Including Plots
+##### Question Four
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+### OECD Wage Data
+
+##### Question One
+Data supplied by the Organization for Economic Co-Operation and Development (OECD) is specific to Employment information and the “Mean Net Wealth per Person” for countries around the world through the years of 2009-2016.
+
+
+##### Question Two
+I found this data when looking for average salaries for a certain company. This data is provided by OECD which is an organization that works on establishing evidence-based international standards and finding solutions to a range of social, economic and environmental challenges. The data is one of many indicators and provides numbers of salaries for a person in a country within a certain year. I found the data here: https://stats.oecd.org/index.aspx?queryid=54751.
+If you click on wealth and change the group to wealth per person this data will show up and I exported it into a csv file.
+
+##### Question Three
+
+```{r individual_wealth_sample, echo=FALSE}
+kable(individual_wealth_sample)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+##### Question Four
+
+
+### Subsection 2.2 Summary Analysis
+
+
+
+## Section 3: Specific Question Analyses
+
+### Kaamna: What is the difference between net income of an average person in the United States compared to a woman working for a Technology company in the U.S.?
+
+
+### Lynzley: Does location affect the global wage gap both within and outside of the tech industry?
+
+
+### Locksley: Does education level affect the average compensation between different genders?
