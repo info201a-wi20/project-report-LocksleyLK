@@ -62,6 +62,19 @@ kable(tech_salary_sample)
 ```
 
 ##### Question Four
+The data in the Reddit Tech Salary Sheet contains individual responses to questions including salary, work experience, role, and aspect of the tech industry they work in. Additional information on the Reddit Tech Salary Sheet column structure:
+
+*Timestamp: When that individual row of data was recorded and added to the dataset
+
+*Industry in Company: Specifies what branch of technology that the company focuses on (such as software, medical engineering, healthcare).
+
+*Years of Experience in Industry: listed as a range versus precise value (0-2, 2-5, 5-10, 10-20, 20+)
+
+*Years of Experience in Company: listed as a range versus precise value (0-2, 2-5, 5-10, 10-20, 20+)
+
+*Job Ladder: Allows respondents to further specify their role and what level of responsibility they in their job
+
+*Job Level: Some roles, like software engineers, have levels to indicate the experience and responsibility of that individual within their job title
 
 
 ### OECD Wage Data
@@ -81,6 +94,11 @@ kable(individual_wealth_sample)
 ```
 
 ##### Question Four
+The Individual Wealth dataset contains data on individual wealth aggregated by country, income, and over time. Additional Information on the Individual Wealth column structure
+
+*Variable: different means related to financial status within households, such as financial assets per household or wealth per person per household
+
+*Value: The value of individual wealth in the household
 
 
 ### Subsection 2.2 Summary Analysis
