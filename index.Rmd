@@ -178,5 +178,10 @@ If you click on wealth and change the group to wealth per person this data will 
 ### Lynzley: Does location affect the global wage gap both within and outside of the tech industry?
 
 
+#### Question One
+The research question I want to answer is: does location affect the global wage gap both within and outside of the tech industry? In this question, I will be considering the global wage gap for men and women in general and the global wage gap for men and women in the tech industry. This will require me to analyze the gender wage differences between locations and career fields.
+
+
+
 >>>>>>> 8698404629b46a2d87a4856cf765aa9783bb7f5d
 ### Locksley: Does education level affect the average compensation between different genders?
