@@ -32,8 +32,8 @@ I believe this question is important to understand the average income of a perso
 
 Lynzley:
 
-	**Does location affect the global wage gap both within and outside of the tech industry?**
-I believe this question is important because it will help us understand if location correlates to the size of the gender wage gap, and if there are differences within regions depending on individuals working in or outside of the tech industry. This will help prove if there are key locations where the wage gap is more prevalent and if technology companies are really providing equal opportunities to people regardless of gender.
+	**Does the gender wage gap differ between people working both within and outside of the tech industry in the United States?**
+I believe this question is important because it will help us understand if the job title correlates to the size of the gender wage gap, and if there are differences in the gender wage gap depending on whether individuals working in or outside of the tech industry. This will help prove if the wage gap is more prevalent in specific industries and if technology companies are really providing equal opportunities to people regardless of gender.
 
 
 Locksley:
