@@ -150,9 +150,25 @@ The final thing worth mentioning for our tech salaries dataset was that of the o
 
 ### Kaamna: What is the difference between net income of an average person in the United States compared to a woman working for a Technology company in the U.S.?
 
+#### Question One
+My data science question is one that will understand information from both of the data sets we have acquired. We are looking for the difference in mean net income from both of the data sets in specific location of the United States. What is specific to the Reddit data is that we are looking for a specific gender, women, and a specific technology company, Microsoft, to be specific in our data to better understand the wages of a minority gender in a booming field of inequality compared to the average salary of an American. 
+
+
+#### Question Two
+Initially we will take the the OECD data frame and wrangle the data by selecting rows that only have the country equaling to the United States. From there we will mutate the data so we can have all of the row entries for the salary column and then take the mean of all those values in a list. We will compare that value of the mean to the wrangled Reddit data that will have been selected for the row values that have the value of "female" for gender and select the company of "Microsoft" from the column company. 
+
+
+#### Question Three
+```{r}
+net_income_usa
+```
+
+#### Question Four
+
+When we graph and wrangle this data we can visualize and answer the question to which a woman working at a Technology company in the United States makes less money than the average person in the United States. The mean annual salary for a woman working for Microsoft in the United States out of three observations is $117500. The mean annual salary for an average person, no identified gender or industry, in the United States
+is $204413.17. We can calculate that there is a 86,913.17 dollar amount difference. This number is seen in our plot as the columns show a difference in length, that the amount of money women make working for the technology industry is less than what an average American makes. This data can show us that the gender wage gap is a living reality, and to think in a booming industry where women are a minority making higher than average salary in the technological industry, but not enough more than an average person in the public. This is a visual of the gender bias and inequality that still exists in the United States to this day and even in growing industries where diversity is coined to making a difference. The reality is that there is still a wage gap that is systematically affecting women for equal amounts of work they are doing compared to their co-workers. Realizing this inequality down to the numbers, we can move to a future where we are being transparent about our salaries so we can identify when women are systematically being paid less and women can have the place necessary to be vocal about the money they need to be paid for the quality work.  
 
 ### Lynzley: Does location affect the global wage gap both within and outside of the tech industry?
-
 
 #### Question 1. Introduction and Explanation of Question
 The data science research question I want to answer is: What is the current global gender wage gap within the technology industry? In this question, I will be comparing the global salaries of men and women from the Reddit Tech Dataset and analyzing the difference between the salaries of men and women in the global technology industry. I am going to primarily focus on using the average salary for men and women in the Reddit Tech Dataset. All of the global salaries are in USD.
@@ -186,6 +202,7 @@ The major observations I have made in answering this data science question is th
 I initially expected the global average salary for both genders to be higher, as I have heard that many people working in the technology industry in the United States and specifically in Seattle-based technology companies begin with a salary that is near to or above six figures. However, some additional analysis of the salaries of people from outside of the US.
 
 Additionally, there is also significantly fewer reports of salaries for women in the technology industry than men, which suggests that there is a possibility for different results if data for more women was present in the dataset.
+
 
 ### Locksley: Does education level affect the average compensation between different genders?
 
