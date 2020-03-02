@@ -1,12 +1,14 @@
 ---
 title: "A Look At The Wage Gap"
-author: "Kaamna Rishi, Lynsley Kolakowski, Locksley Kolakowski, Group E4"
+author: "Kaamna Rishi, Lynzley Kolakowski, Locksley Kolakowski, Group E4"
 date: "2/26/2020"
 output: html_document
 ---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+source("section3.R")
 source("analysis.R")
 library("knitr")
 library("plotly")
