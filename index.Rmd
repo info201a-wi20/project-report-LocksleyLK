@@ -159,7 +159,7 @@ Initially we will take the the OECD data frame and wrangle the data by selecting
 
 
 #### Question Three
-```{r}
+```{r, echo=FALSE}
 net_income_usa
 ```
 
@@ -178,9 +178,7 @@ My data analysis method began with seperating the salaries of men and women into
 
 I then created a bar chart that showcased the earnings of men (indicated in blue) compared to the earnings of women (indicated in red) to visually represent the distrubution of the global salaries of men and women in the technology industry.
 
-```{r lynzley_plot, echo=FALSE}
-lynzley_plot
-```
+
 #### Question 3 - Results of Analysis
 
 I created this table to represent the quantitiave results of my data analysis. The table represents how I specifically collected the average salary for men and women.
@@ -193,6 +191,8 @@ I created this table to represent the quantitiave results of my data analysis. T
 I used the above table to guide me on creating the qualititative results of my data analysis. My bar graph compares the average salary of males and females.
 
 ```{r lynzley_plot, echo=FALSE}
+lynzley_plot
+
 lynzley_plot
 ```
 

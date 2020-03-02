@@ -1,5 +1,3 @@
-library("dplyr")
-library("ggplot2")
 
 # Reddit Tech Salary DataFrame
 
@@ -17,8 +15,8 @@ tech_salary <- tech_salary %>%
 
 tech_salary_sample <- tech_salary[2:4, ]
 
-
 # Individual Wealth Dataframe
+
 
 individual_wealth <- read.csv("individual wealth.csv", stringsAsFactors = FALSE)
 
@@ -35,8 +33,6 @@ individual_wealth <- individual_wealth %>%
 individual_wealth_sample <- individual_wealth[1:3, ]
 
 
-View(tech_salary)
-View(individual_wealth)
 # For our tech slararies data table, the main features we focused on was 
 #salary in relation to highest level of education and gender.
 
@@ -48,7 +44,7 @@ tech_salary_shrunk <- tech_salary_shrunk[2:nrow(tech_salary_shrunk), ]
 summary(tech_salary_shrunk$Total.Base.Salary.in.2018..in.USD.)
 
 tech_salary_gender <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Male" | tech_salary_shrunk$Gender == "Female", ]
-View(tech_salary_gender)
+
 
 tech_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Female", ]
 summary(tech_female$Total.Base.Salary.in.2018..in.USD.)
@@ -91,9 +87,9 @@ education_plot <- ggplot(data = tech_salary_education) +
 
 
 # For the individual salaries dataset, the main feature we focused on was mean net wealth per person.
-individual_wealth$Value <- as.numeric(individual_wealth$Value)
+wealth_value <- individual_wealth$Value <- as.numeric(individual_wealth$Value)
 
-individual_wealth_shrunk <- individual_wealth[individual_wealth$Value < 250000, ]
+individual_wealth_shrunk <- individual_wealth[wealth_value < 250000, ]
 
 summary(individual_wealth_shrunk$Value)
 
@@ -109,17 +105,16 @@ individual_plot <- ggplot(data = individual_wealth_shrunk) +
 # Lynzley's Part 3
 
 # pull out gender and salary for from Reddit Tech Data
-tech_salary <- tech_salary %>%
+tech_salary_gender <- tech_salary %>%
   select(
     Total.Base.Salary.in.2018..in.USD.,
     Gender
   )
 
-individual_wealth <- individual_wealth[individual_wealth$Variable == "Mean net wealth per person (current prices)", ]
 
 # Seperate salaries into gender categories
-tech_salary_males <- tech_salary[tech_salary$Gender == "Male", ]
-tech_salary_females <- tech_salary[tech_salary$Gender == "Female", ]
+tech_salary_males <- tech_salary_gender[tech_salary$Gender == "Male", ]
+tech_salary_females <- tech_salary_gender[tech_salary$Gender == "Female", ]
 
 # find average salaries
 tech_salary_males_mean <- mean(tech_salary_males$Total.Base.Salary.in.2018..in.USD., na.rm = TRUE)
@@ -131,7 +126,7 @@ salary_means <- data.frame(
   "gender" = c("Male", "Female"),
   "salary" = c(77737.52, 71317.76)
 )
-View(salary_means)
+
 
 # creating scatterplot for visual analysis of gender global wage gap
 lynzley_plot <- ggplot(data = salary_means) +
@@ -142,15 +137,6 @@ lynzley_plot <- ggplot(data = salary_means) +
     x = "Gender",
     y = "Salary"
   )
-
-# data_country <- data.frame(country = c("China", "Germany", "UK", "US"), 
-#                            conversion_rate = c(0.001331558,0.062428188, 0.052612025, 0.037800687))
-# ggplot(data_country, aes(x=country,y = conversion_rate)) +geom_bar(stat = "identity")
-
-
-
-
-
 
 
 
@@ -232,6 +218,4 @@ locksley_plot <- ggplot(data = tech_salaries) +
     x = "Education Level",
     y = "Salary ($)"
   )
-
-
 
