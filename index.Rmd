@@ -7,12 +7,10 @@ output: html_document
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-<<<<<<< HEAD
+
 source("section3.R")
-=======
 source("analysis.R")
 library("knitr")
->>>>>>> 61f43c47ae499533af62a83510630bf0c4d20aa7
 ```
 
 ## Section 1. Problem Domain Description
