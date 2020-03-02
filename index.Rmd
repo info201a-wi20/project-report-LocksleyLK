@@ -9,6 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 source("analysis.R")
 library("knitr")
+library("plotly")
 ```
 
 ## Section 1. Problem Domain Description
@@ -21,19 +22,22 @@ Here we will be describing what questions we will be further exploring through o
 
 Kaamna:
 
-	**What is the difference between net income of an average person in the United States compared to a woman working for a Technology company in the U.S.?**
+**What is the difference between net income of an average person in the United States compared to a woman working for a Technology company in the U.S.?**
+
 I believe this question is important to understand the average income of a person regardless of gender in the United States compared to a woman’s income from a company that promises the most diversity and inclusion in their hiring and treatment of employees. This will help prove if Microsoft is an equal opportunity employer and is committed to equal pay amongst all genders.
 
 
 Lynzley:
 
-	**Does the gender wage gap differ between people working both within and outside of the tech industry in the United States?**
+**Does the gender wage gap differ between people working both within and outside of the tech industry in the United States?**
+
 I believe this question is important because it will help us understand if the job title correlates to the size of the gender wage gap, and if there are differences in the gender wage gap depending on whether individuals working in or outside of the tech industry. This will help prove if the wage gap is more prevalent in specific industries and if technology companies are really providing equal opportunities to people regardless of gender.
 
 
 Locksley:
 
 **Does education level affect the average compensation between different genders?**
+
 I believe this question is important because it can help indicate whether different education levels determine pay in the tech industry. This is really important because it can help future students planning on pursuing a career in technology make informed decisions on if making the monetary and time commitment to pursuing higher education will affect their compensation once they enter the industry. Furthermore, it will indicate whether men and women experience inequalities in their education level and compensation, hopefully providing evidence towards the gender pay gap.
 
 
@@ -44,143 +48,100 @@ Here we will be further exloring and explaining our data sets and how we have ch
 
 ### Reddit Tech Data
 
-##### Question One
+##### Question 1 - Non-technichal Description
 The Reddit Tech Salary Sheet is a dataset detailing the salary, company, location, gender, and more of people who chose to share their information who work in the tech industry.
 
-##### Question Two
+##### Question 2 - Where Did the Data Come From?
 The dataset was created from a user on Reddit, a social media website where the users stay anonymous. The user made the data set using  Google Sheets where anyone with the link could input information. I found the source and a csv to download from this link: https://www.reddit.com/r/sysadmin/comments/d2g4hm/reddit_tech_salary_sheet/, and you can view the dataset here: https://docs.google.com/spreadsheets/d/13icckT8wb2ME3FTzgGyokoCTQMU9kBMqQXvg0V3_x54/edit#gid=880492180. The most important thing to keep in mind with this dataset is since it was created through open contributions, it relies on the goodwill and honesty of the contributors to stay honest and accurate. Also, as more people add data, the current csv file we are using will become out of date.
 
-##### Question Three
-
+##### Question 3 - Data Set Sample
 ```{r tech_salary_sample, echo=FALSE}
 kable(tech_salary_sample)
 ```
 
-##### Question Four
-The data in the Reddit Tech Salary Sheet contains individual responses to questions including salary, work experience, role, and aspect of the tech industry they work in. Additional information on the Reddit Tech Salary Sheet column structure:
-
-*Timestamp: When that individual row of data was recorded and added to the dataset
-
-*Industry in Company: Specifies what branch of technology that the company focuses on (such as software, medical engineering, healthcare).
-
-*Years of Experience in Industry: listed as a range versus precise value (0-2, 2-5, 5-10, 10-20, 20+)
-
-*Years of Experience in Company: listed as a range versus precise value (0-2, 2-5, 5-10, 10-20, 20+)
-
-*Job Ladder: Allows respondents to further specify their role and what level of responsibility they in their job
-
-*Job Level: Some roles, like software engineers, have levels to indicate the experience and responsibility of that individual within their job title
-
+##### Question Four - Data Set Explanation
+The data in the Reddit Tech Salary Sheet contains individual responses to questions including company, country, city, degree, base salary, and gender.
 
 ### OECD Wage Data
 
-##### Question One
+##### Question 1 - Non-technichal Description
 Data supplied by the Organization for Economic Co-Operation and Development (OECD) is specific to Employment information and the “Mean Net Wealth per Person” for countries around the world through the years of 2009-2016.
 
 
-##### Question Two
+##### Question 2 - Where Did the Data Come From?
 I found this data when looking for average salaries for a certain company. This data is provided by OECD which is an organization that works on establishing evidence-based international standards and finding solutions to a range of social, economic and environmental challenges. The data is one of many indicators and provides numbers of salaries for a person in a country within a certain year. I found the data here: https://stats.oecd.org/index.aspx?queryid=54751.
 If you click on wealth and change the group to wealth per person this data will show up and I exported it into a csv file.
 
-##### Question Three
-
+##### Question 3 - Data Set Sample
 ```{r individual_wealth_sample, echo=FALSE}
 kable(individual_wealth_sample)
 ```
 
-##### Question Four
+##### Question Four - Data Set Explanation
 The Individual Wealth dataset contains data on individual wealth aggregated by country, income, and over time. Additional Information on the Individual Wealth column structure
 
-*Variable: different means related to financial status within households, such as financial assets per household or wealth per person per household
+**Variable:** different means related to financial status within households, such as financial assets per household or wealth per person per household
 
-*Value: The value of individual wealth in the household
+**Value:** The value of individual wealth in the household
 
 
 ### Subsection 2.2 Summary Analysis
 
+##### Question 1. Descriptive Statistics and Central Tendency Measures
+For our Reddit Tech Salary Sheet, the main features we focused on was 
+salary in relation to highest level of education and gender. The first table below displays a summary of the central tendency members of tech salaries.
+
 | Major Feature | Min | 1st Qu. | Median | Mean | 3rd Qu. | Max |
 |---|---|---|---|---|---|---|
 | Tech Salary | 10300 | 50000 | 70000 | 75744 | 95000 | 245000 |
+
+The next table displays a summary of the central tendency members of tech salaries in relation to gender.
 
 | Major Feature | Min | 1st Qu. | Median | Mean | 3rd Qu. | Max |
 |---|---|---|---|---|---|---|
 | Male Tech Salary | 10300 | 50000 | 69500 | 75770 | 95000 | 245000 |
 | Female Tech Salary | 10500 | 52000 | 68000 | 73449 | 95000 | 175000 |
 
+The next table displays a summary of the central tendency members of tech salaries in relation to education level.
+
 | Major Feature | Min | 1st Qu. | Median | Mean | 3rd Qu. | Max |
 |---|---|---|---|---|---|---|
 | High School Diploma | 10300 | 48875 | 68000 | 74828 | 95000 | 230000 |
-| Trade School | 11500 | 44702 | 60000 | 63611 | 76000 | 210000 |
-| Technichal Certifications | 10500 | 44000 | 60000 | 66855 | 84000 | 220000 |
-| Associate Degree | 22000 | 45525 | 60000 | 64199 | 78000 | 145000 |
 | Bachelor Degree | 10500 | 55000 | 75000 | 81075 | 100000 | 245000 |
 | Master Degree | 10451 | 46000 | 70000 | 76416 | 100000 | 237000 |
 | Doctorate | 27000 | 68500 | 125000 | 114909 | 147500 | 240000 |
 
+For the individual salaries dataset, the main feature we focused on was mean net wealth per person.
 
-## Section 3: Specific Question Analyses
+| Major Feature | Min | 1st Qu. | Median | Mean | 3rd Qu. | Max |
+|---|---|---|---|---|---|---|
+| Mean Net Wealth per Person | 16804 | 59751 | 103817 | 107560 | 142071 | 248812 |
 
-### Kaamna: What is the difference between net income of an average person in the United States compared to a woman working for a Technology company in the U.S.?
+##### Question 2. Plot Illustrations
+To determine the distribution of salaries, we first created a boxplot that displayed salary distribution based on gender for our Reddit Tech Dataset.
 
+```{r gender_plot, echo=FALSE}
+gender_plot
+```
 
-### Lynzley: Does location affect the global wage gap both within and outside of the tech industry?
+Our second boxplot dispalys distribution based on education level for our Reddit Tech Dataset.
 
+```{r education_plot, echo=FALSE}
+education_plot
+```
 
-=======
+Our final boxplot displays distribution based on mean net wealth per person for our Individual Wealth Dataset.
 
-Kaamna:
+```{r individual_plot, echo=FALSE}
+individual_plot
+```
 
-	**What is the difference between net income of an average person in the United States compared to a woman working for a Technology company in the U.S.?**
-I believe this question is important to understand the average income of a person regardless of gender in the United States compared to a woman’s income from a company that promises the most diversity and inclusion in their hiring and treatment of employees. This will help prove if Microsoft is an equal opportunity employer and is committed to equal pay amongst all genders.
+##### Question 3. Significant Outliers Explanation and Analysis
+In our datasets, the significant outliers we had was with our salaries. For both datasets, we had some salaries that were over one million dollars! We noticed that this data skewed our boxplots and decided to wrangle each dataframe to only include salaries that were less than 250,000 dollars. In the above boxplots, you can see how there are still some outliers close to the 250,000 dollar mark. Before eliminating all salaries above 250,000 dollars, there were far more outliers that made the actual box part of the plot nonexistant. Ultimately, choosing to wrangle our dataset made our boxplots actually readable in addition to making our future analysis more accurate. Additionally, for our tech salaries dataset, some of the salaries were not inputted. This was skewing our boxplots to have a minimum value of zero so we decided to wrangle this data set to only include salaries that were great than 10,000 dollars and to not include missing values.
 
+Another thing we experienced was for our tech salaries dataset, there were a lot of different types of education listed. We decided to only use the most common types of education and focus on recieving a High School Diploma, Bachelor's Degree, Master's Degree, or Doctorate.. 
 
-Lynzley:
-
-	**Does location affect the global wage gap both within and outside of the tech industry?**
-I believe this question is important because it will help us understand if location correlates to the size of the gender wage gap, and if there are differences within regions depending on individuals working in or outside of the tech industry. This will help prove if there are key locations where the wage gap is more prevalent and if technology companies are really providing equal opportunities to people regardless of gender.
-
-
-Locksley:
-
-**Does education level affect the average compensation between different genders?**
-I believe this question is important because it can help indicate whether different education levels determine pay in the tech industry. This is really important because it can help future students planning on pursuing a career in technology make informed decisions on if making the monetary and time commitment to pursuing higher education will affect their compensation once they enter the industry. Furthermore, it will indicate whether men and women experience inequalities in their education level and compensation, hopefully providing evidence towards the gender pay gap.
-
-
-
-## Section 2. Data Description
-
-Here we will be further exloring and explaining our data sets and how we have chosen them, then we will wrangle and display an overview of our summary analysis.
-
-### Reddit Tech Data
-
-##### Question One
-The Reddit Tech Salary Sheet is a dataset detailing the salary, company, location, gender, and more of people who chose to share their information who work in the tech industry.
-
-##### Question Two
-The dataset was created from a user on Reddit, a social media website where the users stay anonymous. The user made the data set using  Google Sheets where anyone with the link could input information. I found the source and a csv to download from this link: https://www.reddit.com/r/sysadmin/comments/d2g4hm/reddit_tech_salary_sheet/, and you can view the dataset here: https://docs.google.com/spreadsheets/d/13icckT8wb2ME3FTzgGyokoCTQMU9kBMqQXvg0V3_x54/edit#gid=880492180. The most important thing to keep in mind with this dataset is since it was created through open contributions, it relies on the goodwill and honesty of the contributors to stay honest and accurate. Also, as more people add data, the current csv file we are using will become out of date.
-
-##### Question Three
-
-##### Question Four
-
-
-### OECD Wage Data
-
-##### Question One
-Data supplied by the Organization for Economic Co-Operation and Development (OECD) is specific to Employment information and the “Mean Net Wealth per Person” for countries around the world through the years of 2009-2016.
-
-
-##### Question Two
-I found this data when looking for average salaries for a certain company. This data is provided by OECD which is an organization that works on establishing evidence-based international standards and finding solutions to a range of social, economic and environmental challenges. The data is one of many indicators and provides numbers of salaries for a person in a country within a certain year. I found the data here: https://stats.oecd.org/index.aspx?queryid=54751.
-If you click on wealth and change the group to wealth per person this data will show up and I exported it into a csv file.
-
-##### Question Three
-
-##### Question Four
-
-
-### Subsection 2.2 Summary Analysis
-
+The final thing worth mentioning for our tech salaries dataset was that of the over 4,000 reported salaries, only 167 were reported by females. Not only is this a stark representation of the lack of women in the technology industry, it means that some of our analysis done on women may be inaccurate because of the small amount of data we have to go on. Additionally, wre had some outlier genders and decided to wrangle our dataset to only include people who identified as male or female. 
 
 
 ## Section 3: Specific Question Analyses
@@ -191,8 +152,35 @@ If you click on wealth and change the group to wealth per person this data will 
 ### Lynzley: Does location affect the global wage gap both within and outside of the tech industry?
 
 
-#### Question One
+#### Question 1. Introduction and Explanation of Question
 The research question I want to answer is: does location affect the global wage gap both within and outside of the tech industry? In this question, I will be considering the global wage gap for men and women in general and the global wage gap for men and women in the tech industry. This will require me to analyze the gender wage differences between locations and career fields.
 
-
 ### Locksley: Does education level affect the average compensation between different genders?
+
+#### Question 1. Introduction and Explanation of Question
+My question will use the Reddit Tech Salary DataSet. The education level aspect of my dataset is supposed to represent the highest level of education that person recieved. Although there are multiple education levels listed in the dataset, the primary ones I will be focusing are high school diploma, associate degree, bachelor's degree, master's degree, and doctorate. For gender, I am only going to focus on people who identify themselves as male or female. Finally, for salary, I am going to focus on the **average** base salary and not include bonuses, stock options, etc. 
+
+#### Question 2 - Data Analysis Method
+My data analysis method involved taking the average salary for men and women of different education levels and comparing them. In order to do this, I first had to create a new dataframe that included the average salary for men and women for a High School Diploma, Bachelor's Degree, Master's Degree, and Doctorate. At this point, I created a scatterplot that represented the means for each of these education levels. Although I would have preferred to be more gender neutral, I decided it would be the most intuitive if I made the male averages blue and the female averages red in my scatterplot.
+
+
+#### Question 3 - Results of Analysis
+I created the below table to represent the quantitiave results of my data analysis. The below table represents how I specifically collected the average salary for men and women that graduated with different degrees.
+
+| Gender | High School Diploma | Bachelor's Degree | Master's Degree | Doctorate |
+|---|---|---|---|---|---|
+| Male | 75256 | 81280 | 75826 | 111570 |
+| Female | 65119 | 77830 | 78086 | 121000 |
+
+I used the above table to guide me on creating the qualititative results of my data analysis. My scatter plot compares male and female salaries based on their education level.
+
+```{r locksley_plot, echo=FALSE}
+locksley_plot
+```
+
+#### Question 4 - Result Evaluation
+Overall, my plot indicates that a higher education results in a higher salary, thje primary exception for this being earning a Master's Degree for men. Unlike women who see an average increase of 256 dollars a year, men are seeing an average decrease of 5,454 dollars for obtaining a Master's degree. This is especially interesting because in a time when undergraduate degrees are worth less, it is fairly common to pursue a Master's Degree. Is it possible that people in the tech industry should not waste time and/or money pursuing a degree that produces a very little increase (or decrease) in their salary?
+
+A second observation I made is that it seems very benefical to pursue a Doctorate. For example, men with a Doctorate earn on average 30,290 dollars more than men with a Bachelor's degree and women with a Doctorate earn on average 43,170 dollars more than women with a Bachelor's degree. This is especially interesting because it is stereotypically believed that most people with a Doctorate earn less because they are working in Acadamia. I think more research needs to be done with more inputted salaries for people with Doctorates before a conclusion can be drawn.
+
+A final observation I made is men earn more on average who have completed their High School Diploma or Bachelor's Degree but women earn more who have completed their Master's or Doctorate Degree. In our data, we see that men who have completed their High School Diploma earn 10,137 dollars more than females and, men who have completed their Bachelor's Degree earn on average 3,450 dollars more than Females. However, women who have completed their Master's Degree earn on average 2,260 dollars more than men, and women who have earned their Doctorate earn on average 9,430 dollars more than men. Once again, I think more research needs to be done to include more women in the dataset before a conclusion can be drawn.

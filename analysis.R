@@ -1,4 +1,5 @@
 library("dplyr")
+library("ggplot2")
 
 # Reddit Tech Salary DataFrame
 
@@ -43,82 +44,142 @@ View(individual_wealth)
 tech_salary_shrunk <- tech_salary[tech_salary$Total.Base.Salary.in.2018..in.USD. < 250000, ]
 tech_salary_shrunk <- tech_salary_shrunk[tech_salary_shrunk$Total.Base.Salary.in.2018..in.USD. > 10000, ]
 
-print(summary(tech_salary_shrunk$Total.Base.Salary.in.2018..in.USD.))
+summary(tech_salary_shrunk$Total.Base.Salary.in.2018..in.USD.)
 
-boxplot(tech_salary_shrunk$Total.Base.Salary.in.2018..in.USD.,
-        main = "Total Base Salary",
-        xlab = "Dollars",
-        horizontal = TRUE 
-)
-
-
+tech_salary_gender <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Male" | tech_salary_shrunk$Gender == "Female", ]
+View(tech_salary_gender)
 
 tech_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Female", ]
-
-print(summary(tech_female$Total.Base.Salary.in.2018..in.USD.))
-
-boxplot(tech_female$Total.Base.Salary.in.2018..in.USD.,
-        horizontal = TRUE 
-)
+summary(tech_female$Total.Base.Salary.in.2018..in.USD.)
 
 tech_male <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Male", ]
-print(summary(tech_male$Total.Base.Salary.in.2018..in.USD.))
+summary(tech_male$Total.Base.Salary.in.2018..in.USD.)
 
-boxplot(tech_male$Total.Base.Salary.in.2018..in.USD.,
-        horizontal = TRUE 
-)
+gender_plot <- ggplot(data = tech_salary_gender) +
+  geom_boxplot(
+    mapping = aes(x = Gender, y = Total.Base.Salary.in.2018..in.USD.)
+  )
 
+
+tech_salary_education <- tech_salary_shrunk[tech_salary_shrunk$Highest.Level.of.Formal.Education.Completed == "High School" |
+                                           tech_salary_shrunk$Highest.Level.of.Formal.Education.Completed == "Undergraduate Degree" |
+                                           tech_salary_shrunk$Highest.Level.of.Formal.Education.Completed == "Graduate Degree" |
+                                           tech_salary_shrunk$Highest.Level.of.Formal.Education.Completed == "Doctorate or Post-doctorate",
+                                         ]
 
 tech_highschool <- tech_salary_shrunk[tech_salary_shrunk$Highest.Level.of.Formal.Education.Completed == "High School",]
-print(summary(tech_highschool$Total.Base.Salary.in.2018..in.USD.))
-
-boxplot(tech_highschool$Total.Base.Salary.in.2018..in.USD.,
-        horizontal = TRUE 
-)
-
-tech_tradeschool <- tech_salary_shrunk[tech_salary_shrunk$Highest.Level.of.Formal.Education.Completed == "Trade School",]
-print(summary(tech_tradeschool$Total.Base.Salary.in.2018..in.USD.))
-
-boxplot(tech_tradeschool$Total.Base.Salary.in.2018..in.USD.,
-        horizontal = TRUE 
-)
-
-tech_certifications <- tech_salary_shrunk[tech_salary_shrunk$Highest.Level.of.Formal.Education.Completed == "Professional Certifications",]
-print(summary(tech_certifications$Total.Base.Salary.in.2018..in.USD.))
-
-boxplot(tech_certifications$Total.Base.Salary.in.2018..in.USD.,
-        horizontal = TRUE 
-)
+summary(tech_highschool$Total.Base.Salary.in.2018..in.USD.)
 
 tech_associate <- tech_salary_shrunk[tech_salary_shrunk$Highest.Level.of.Formal.Education.Completed == "Associates Degree",]
-print(summary(tech_associate$Total.Base.Salary.in.2018..in.USD.))
-
-boxplot(tech_associate$Total.Base.Salary.in.2018..in.USD.,
-        horizontal = TRUE 
-)
+summary(tech_associate$Total.Base.Salary.in.2018..in.USD.)
 
 tech_undergraduate <- tech_salary_shrunk[tech_salary_shrunk$Highest.Level.of.Formal.Education.Completed == "Undergraduate Degree", ] 
-print(summary(tech_undergraduate$Total.Base.Salary.in.2018..in.USD.))
-
-boxplot(tech_undergraduate$Total.Base.Salary.in.2018..in.USD.,
-        horizontal = TRUE 
-)
+summary(tech_undergraduate$Total.Base.Salary.in.2018..in.USD.)
 
 tech_graduate <- tech_salary_shrunk[tech_salary_shrunk$Highest.Level.of.Formal.Education.Completed == "Graduate Degree", ] 
-print(summary(tech_graduate$Total.Base.Salary.in.2018..in.USD))
-
-boxplot(tech_graduate$Total.Base.Salary.in.2018..in.USD.,
-        horizontal = TRUE 
-)
+summary(tech_graduate$Total.Base.Salary.in.2018..in.USD)
 
 tech_doctorate <- tech_salary_shrunk[tech_salary_shrunk$Highest.Level.of.Formal.Education.Completed == "Doctorate or Post-doctorate", ] 
-print(summary(tech_doctorate$Total.Base.Salary.in.2018..in.USD))
+summary(tech_doctorate$Total.Base.Salary.in.2018..in.USD)
 
-boxplot(tech_doctorate$Total.Base.Salary.in.2018..in.USD.,
-        horizontal = TRUE 
-)
+education_plot <- ggplot(data = tech_salary_education) +
+  geom_boxplot(
+    mapping = aes(x = Highest.Level.of.Formal.Education.Completed, y = Total.Base.Salary.in.2018..in.USD.),
+    na.rm = TRUE
+  )
+
 
 # For the individual salaries dataset, the main feature we focused on was mean net wealth per person.
-print(summary(individual_wealth$Value))
+individual_wealth$Value <- as.numeric(individual_wealth$Value)
+
+individual_wealth_shrunk <- individual_wealth[individual_wealth$Value < 250000, ]
+
+summary(individual_wealth_shrunk$Value)
+
+individual_plot <- ggplot(data = individual_wealth_shrunk) +
+  geom_boxplot(
+    mapping = aes(x = Variable, y = Value),
+    na.rm = TRUE
+  )
 
 
+
+
+# Locksley's Part 3
+tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Female", ]
+# View(tech_salary_shrunk_female)
+tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "High School", ]
+summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
+
+tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Female", ]
+# View(tech_salary_shrunk_female)
+tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Associates Degree", ]
+summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
+
+tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Female", ]
+# View(tech_salary_shrunk_female)
+tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Undergraduate Degree", ]
+summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
+
+tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Female", ]
+# View(tech_salary_shrunk_female)
+tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Graduate Degree", ]
+summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
+
+tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Female", ]
+# View(tech_salary_shrunk_female)
+tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Doctorate or Post-doctorate", ]
+summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
+
+
+
+tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Male", ]
+# View(tech_salary_shrunk_female)
+tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "High School", ]
+summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
+
+tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Male", ]
+# View(tech_salary_shrunk_female)
+tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Associates Degree", ]
+summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
+
+tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Male", ]
+# View(tech_salary_shrunk_female)
+tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Undergraduate Degree", ]
+summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
+
+tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Male", ]
+# View(tech_salary_shrunk_female)
+tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Graduate Degree", ]
+summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
+
+tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Male", ]
+# View(tech_salary_shrunk_female)
+tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Doctorate or Post-doctorate", ]
+summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
+
+
+tech_salaries <- data.frame(
+  "Education" = c("1 - High School Diploma", "2 - Bachelor's Degree", "3 - Master's Degree", "4 - Doctorate"),
+  "Male" = c(75256, 81280, 75826, 111570),
+  "Female" = c(65119, 77830, 78086, 121000)
+)
+
+
+locksley_plot <- ggplot(data = tech_salaries) +
+  
+  geom_point(
+    mapping = aes(x = Education, y = Female, color = "blue")
+  ) +
+  
+  geom_point(
+    mapping = aes(x = Education, y = Male, color = "red")
+  ) +
+  
+  scale_color_discrete(labels = c("Women", "Men")) +
+  
+  labs(
+    title = "Tech Salary Gender Comparison",
+    x = "Education Level",
+    y = "Salary ($)"
+  )
