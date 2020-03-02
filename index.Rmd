@@ -194,8 +194,6 @@ I used the above table to guide me on creating the qualititative results of my d
 
 ```{r lynzley_plot, echo=FALSE}
 lynzley_plot
-
-lynzley_plot
 ```
 
 #### Question 4 - Result Evaluation
