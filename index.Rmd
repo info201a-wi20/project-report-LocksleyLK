@@ -160,6 +160,8 @@ Initially we will take the the OECD data frame and wrangle the data by selecting
 
 #### Question Three
 ```{r, echo=FALSE}
+individual_table
+reddit_table
 net_income_usa
 ```
 
