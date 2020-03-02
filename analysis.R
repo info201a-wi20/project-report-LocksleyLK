@@ -1,6 +1,5 @@
 
 # Reddit Tech Salary DataFrame
-tech_salary_sample <- tech_salary[2:4, ]
 
 tech_salary <- read.csv("reddit_tech_salary_sheet.csv", stringsAsFactors = FALSE)
 
@@ -14,10 +13,12 @@ tech_salary <- tech_salary %>%
     Gender
   )
 
-# Individual Wealth Dataframe
-individual_wealth_sample <- individual_wealth[1:3, ]
+tech_salary_sample <- tech_salary[2:4, ]
 
-individual_wealth <- read.csv("individual wealth.csv", stringsAsFactors = FALSE, skip = 1)
+# Individual Wealth Dataframe
+
+
+individual_wealth <- read.csv("individual wealth.csv", stringsAsFactors = FALSE)
 
 individual_wealth <- individual_wealth[individual_wealth$Variable == "Mean net wealth per person (current prices)", ]
 
@@ -29,8 +30,9 @@ individual_wealth <- individual_wealth %>%
     Value
   )
 
-View(tech_salary)
-View(individual_wealth)
+individual_wealth_sample <- individual_wealth[1:3, ]
+
+
 # For our tech slararies data table, the main features we focused on was 
 #salary in relation to highest level of education and gender.
 
@@ -42,7 +44,7 @@ tech_salary_shrunk <- tech_salary_shrunk[2:nrow(tech_salary_shrunk), ]
 summary(tech_salary_shrunk$Total.Base.Salary.in.2018..in.USD.)
 
 tech_salary_gender <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Male" | tech_salary_shrunk$Gender == "Female", ]
-View(tech_salary_gender)
+
 
 tech_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Female", ]
 summary(tech_female$Total.Base.Salary.in.2018..in.USD.)
@@ -85,9 +87,9 @@ education_plot <- ggplot(data = tech_salary_education) +
 
 
 # For the individual salaries dataset, the main feature we focused on was mean net wealth per person.
-individual_wealth$Value <- as.numeric(individual_wealth$Value)
+wealth_value <- individual_wealth$Value <- as.numeric(individual_wealth$Value)
 
-individual_wealth_shrunk <- individual_wealth[individual_wealth$Value < 250000, ]
+individual_wealth_shrunk <- individual_wealth[wealth_value < 250000, ]
 
 summary(individual_wealth_shrunk$Value)
 
@@ -103,17 +105,16 @@ individual_plot <- ggplot(data = individual_wealth_shrunk) +
 # Lynzley's Part 3
 
 # pull out gender and salary for from Reddit Tech Data
-tech_salary <- tech_salary %>%
+tech_salary_gender <- tech_salary %>%
   select(
     Total.Base.Salary.in.2018..in.USD.,
     Gender
   )
 
-individual_wealth <- individual_wealth[individual_wealth$Variable == "Mean net wealth per person (current prices)", ]
 
 # Seperate salaries into gender categories
-tech_salary_males <- tech_salary[tech_salary$Gender == "Male", ]
-tech_salary_females <- tech_salary[tech_salary$Gender == "Female", ]
+tech_salary_males <- tech_salary_gender[tech_salary$Gender == "Male", ]
+tech_salary_females <- tech_salary_gender[tech_salary$Gender == "Female", ]
 
 # find average salaries
 tech_salary_males_mean <- mean(tech_salary_males$Total.Base.Salary.in.2018..in.USD., na.rm = TRUE)
@@ -125,7 +126,7 @@ salary_means <- data.frame(
   "gender" = c("Male", "Female"),
   "salary" = c(77737.52, 71317.76)
 )
-View(salary_means)
+
 
 # creating scatterplot for visual analysis of gender global wage gap
 lynzley_plot <- ggplot(data = salary_means) +
@@ -217,61 +218,4 @@ locksley_plot <- ggplot(data = tech_salaries) +
     x = "Education Level",
     y = "Salary ($)"
   )
-
-####################################################
-######## Kaamna's Section Three, Question 3 + 4 ####
-####################################################
-
-library("dplyr")
-library("ggplot2")
-library("tidyr")
-library("data.table")
-
-
-# Individual Wealth Dataframe
-
-individual_usa <- individual_wealth %>% 
-  filter(Country == "United States") 
-
-numeric_individual<- as.numeric(individual_usa$Value)
-mean_individual<- mean(numeric_individual)
-
-
-# data table
-individual_data <- individual_usa[1:4]
-individual_table <- as.data.table(individual_data, keep.rownames = FALSE)
-
-
-# Reddit Tech Salary DataFrame
-
-
-microsoft_female <- tech_salary %>% 
-  filter(
-    Company.Name == "Microsoft",
-    Gender == "Female"
-  ) %>% 
-  mutate(
-    Value = Total.Base.Salary.in.2018..in.USD.,
-  )
-
-numeric_female <- as.numeric(microsoft_female$Value)
-microsoft_mean <- mean(numeric_female)
-
-
-# data table
-microsoft_table <- microsoft_female[1:5]
-reddit_table <- as.data.table(microsoft_table, keep.rownames = FALSE)
-
-# the plot of data
-net_income_usa <- ggplot() +
-  geom_col(microsoft_female, mapping = aes(fill = "Company.Name", x = Primary.Location..Country., y = microsoft_mean), stat = "identity", width = 1) +
-  geom_col(individual_usa, mapping = aes(fill = "Total Population", x = Country, y = mean_individual), stat = "identity", width = 1) +
-  labs(title = "Salary of Woman vs. the USA", x = "Country", y = "Dollars") +
-  theme(axis.text.x = element_text(size = 10)) +
-  scale_fill_discrete(name = "Type of Work", labels = c("Technology Company (Microsoft)", "USA Average"))
-
-####################################################
-############ end of Kaamna's section ###############
-####################################################
-
 

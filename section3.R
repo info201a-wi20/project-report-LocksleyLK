@@ -1,7 +1,6 @@
 ####################################################
 ######## Kaamna's Section Three, Question 3 + 4 ####
 ####################################################
-
 library("dplyr")
 library("ggplot2")
 library("tidyr")
@@ -9,7 +8,7 @@ library("data.table")
 
 
 # Individual Wealth Dataframe
-individual_wealth <- read.csv("individual wealth.csv", stringsAsFactors = FALSE, skip = 1)
+individual_wealth <- read.csv("individual wealth.csv", stringsAsFactors = FALSE)
 
 individual_wealth <- individual_wealth[individual_wealth$Variable == "Mean net wealth per person (current prices)", ]
 
@@ -75,5 +74,3 @@ net_income_usa <- ggplot() +
 ####################################################
 ############ end of Kaamna's section ###############
 ####################################################
-
-
