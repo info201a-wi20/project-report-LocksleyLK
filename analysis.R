@@ -2,10 +2,32 @@
 # Reddit Tech Salary DataFrame
 tech_salary_sample <- tech_salary[2:4, ]
 
+tech_salary <- read.csv("reddit_tech_salary_sheet.csv", stringsAsFactors = FALSE)
+
+tech_salary <- tech_salary %>%
+  select(
+    Company.Name, 
+    Primary.Location..Country., 
+    Primary.Location..City., 
+    Highest.Level.of.Formal.Education.Completed, 
+    Total.Base.Salary.in.2018..in.USD., 
+    Gender
+  )
 
 # Individual Wealth Dataframe
 individual_wealth_sample <- individual_wealth[1:3, ]
 
+individual_wealth <- read.csv("individual wealth.csv", stringsAsFactors = FALSE, skip = 1)
+
+individual_wealth <- individual_wealth[individual_wealth$Variable == "Mean net wealth per person (current prices)", ]
+
+individual_wealth <- individual_wealth %>%
+  select(
+    Country,
+    Variable,
+    Population,
+    Value
+  )
 
 View(tech_salary)
 View(individual_wealth)
@@ -115,15 +137,6 @@ lynzley_plot <- ggplot(data = salary_means) +
     y = "Salary"
   )
 
-# data_country <- data.frame(country = c("China", "Germany", "UK", "US"), 
-#                            conversion_rate = c(0.001331558,0.062428188, 0.052612025, 0.037800687))
-# ggplot(data_country, aes(x=country,y = conversion_rate)) +geom_bar(stat = "identity")
-
-
-
-
-
-
 
 
 # Locksley's Part 3
@@ -216,17 +229,6 @@ library("data.table")
 
 
 # Individual Wealth Dataframe
-individual_wealth <- read.csv("individual wealth.csv", stringsAsFactors = FALSE, skip = 1)
-
-individual_wealth <- individual_wealth[individual_wealth$Variable == "Mean net wealth per person (current prices)", ]
-
-individual_wealth <- individual_wealth %>%
-  select(
-    Country,
-    Variable,
-    Population,
-    Value
-  )
 
 individual_usa <- individual_wealth %>% 
   filter(Country == "United States") 
@@ -242,17 +244,6 @@ individual_table <- as.data.table(individual_data, keep.rownames = FALSE)
 
 # Reddit Tech Salary DataFrame
 
-tech_salary <- read.csv("reddit_tech_salary_sheet.csv", stringsAsFactors = FALSE)
-
-tech_salary <- tech_salary %>%
-  select(
-    Company.Name, 
-    Primary.Location..Country., 
-    Primary.Location..City., 
-    Highest.Level.of.Formal.Education.Completed, 
-    Total.Base.Salary.in.2018..in.USD., 
-    Gender
-  )
 
 microsoft_female <- tech_salary %>% 
   filter(

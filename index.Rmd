@@ -8,7 +8,6 @@ output: html_document
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-source("section3.R")
 source("analysis.R")
 library("knitr")
 library("plotly")
