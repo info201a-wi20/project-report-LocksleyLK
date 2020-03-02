@@ -151,54 +151,44 @@ lynzley_plot <- ggplot(data = salary_means) +
 # Locksley's Part 3
 # The below code gets a summary of all the salaries relative to education AND gender.
 tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Female", ]
-# View(tech_salary_shrunk_female)
 tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "High School", ]
 summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
 
 tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Female", ]
-# View(tech_salary_shrunk_female)
 tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Associates Degree", ]
 summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
 
 tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Female", ]
-# View(tech_salary_shrunk_female)
 tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Undergraduate Degree", ]
 summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
 
 tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Female", ]
-# View(tech_salary_shrunk_female)
 tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Graduate Degree", ]
 summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
 
 tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Female", ]
-# View(tech_salary_shrunk_female)
 tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Doctorate or Post-doctorate", ]
 summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
 
 
 
 tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Male", ]
-# View(tech_salary_shrunk_female)
 tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "High School", ]
 summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
 
 tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Male", ]
-# View(tech_salary_shrunk_female)
 tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Associates Degree", ]
 summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
 
 tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Male", ]
-# View(tech_salary_shrunk_female)
 tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Undergraduate Degree", ]
 summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
 
 tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Male", ]
-# View(tech_salary_shrunk_female)
 tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Graduate Degree", ]
 summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
 
 tech_salary_shrunk_female <- tech_salary_shrunk[tech_salary_shrunk$Gender == "Male", ]
-# View(tech_salary_shrunk_female)
 tech_salary_shrunk_female <- tech_salary_shrunk_female[tech_salary_shrunk_female$Highest.Level.of.Formal.Education.Completed == "Doctorate or Post-doctorate", ]
 summary(tech_salary_shrunk_female$Total.Base.Salary.in.2018..in.USD.)
 
