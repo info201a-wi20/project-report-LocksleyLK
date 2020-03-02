@@ -153,10 +153,16 @@ The final thing worth mentioning for our tech salaries dataset was that of the o
 
 
 #### Question 1. Introduction and Explanation of Question
-The research question I want to answer is: does location affect the global wage gap both within and outside of the tech industry? In this question, I will be considering the global wage gap for men and women in general and the global wage gap for men and women in the tech industry. This will require me to analyze the gender wage differences between locations and career fields.
+The data science research question I want to answer is: What is the current global gender wage gap within the technology industry? In this question, I will be comparing the global salaries of men and women from the Reddit Tech Dataset and analyzing the difference between the salaries of men and women in the global technology industry. I am going to primarily focus on using the average salary for men and women in the Reddit Tech Dataset. All of the global salaries are in USD.
 
 #### Question 2 - Data Analysis Method
+My data analysis method began with seperating the salaries of men and women into respective datesets for comparison. Before making a comparison between the wages for both genders, I calculated the mean salary for males and females respectivly. This allowed for immediate comparision between the global average salary of men and women working in the technology industry. 
 
+I then created a bar chart that showcased the earnings of men (indicated in blue) compared to the earnings of women (indicated in red) to visually represent the distrubution of the global salaries of men and women in the technology industry.
+
+```{r lynzley_plot, echo=FALSE}
+lynzley_plot
+```
 #### Question 3 - Results of Analysis
 
 I created this table to represent the quantitiave results of my data analysis. The table represents how I specifically collected the average salary for men and women.
@@ -173,7 +179,11 @@ lynzley_plot
 ```
 
 #### Question 4 - Result Evaluation
+The major observations I have made in answering this data science question is that there is still a significant wage gap between the global avereage for men and women working in the technology industry. On a global average, men earn $6,149.75 more a year than women in the technology industry.
 
+I initially expected the global average salary for both genders to be higher, as I have heard that many people working in the technology industry in the United States and specifically in Seattle-based technology companies begin with a salary that is near to or above six figures. However, some additional analysis of the salaries of people from outside of the US.
+
+Additionally, there is also significantly fewer reports of salaries for women in the technology industry than men, which suggests that there is a possibility for different results if data for more women was present in the dataset.
 
 ### Locksley: Does education level affect the average compensation between different genders?
 
