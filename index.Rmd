@@ -48,36 +48,36 @@ Here we will be further exloring and explaining our data sets and how we have ch
 
 ### Reddit Tech Data
 
-##### Question 1 - Non-technichal Description
+#### Question 1 - Non-technichal Description
 The Reddit Tech Salary Sheet is a dataset detailing the salary, company, location, gender, and more of people who chose to share their information who work in the tech industry.
 
-##### Question 2 - Where Did the Data Come From?
+#### Question 2 - Where Did the Data Come From?
 The dataset was created from a user on Reddit, a social media website where the users stay anonymous. The user made the data set using  Google Sheets where anyone with the link could input information. I found the source and a csv to download from this link: https://www.reddit.com/r/sysadmin/comments/d2g4hm/reddit_tech_salary_sheet/, and you can view the dataset here: https://docs.google.com/spreadsheets/d/13icckT8wb2ME3FTzgGyokoCTQMU9kBMqQXvg0V3_x54/edit#gid=880492180. The most important thing to keep in mind with this dataset is since it was created through open contributions, it relies on the goodwill and honesty of the contributors to stay honest and accurate. Also, as more people add data, the current csv file we are using will become out of date.
 
-##### Question 3 - Data Set Sample
+#### Question 3 - Data Set Sample
 ```{r tech_salary_sample, echo=FALSE}
 kable(tech_salary_sample)
 ```
 
-##### Question Four - Data Set Explanation
+#### Question Four - Data Set Explanation
 The data in the Reddit Tech Salary Sheet contains individual responses to questions including company, country, city, degree, base salary, and gender.
 
 ### OECD Wage Data
 
-##### Question 1 - Non-technichal Description
+#### Question 1 - Non-technichal Description
 Data supplied by the Organization for Economic Co-Operation and Development (OECD) is specific to Employment information and the “Mean Net Wealth per Person” for countries around the world through the years of 2009-2016.
 
 
-##### Question 2 - Where Did the Data Come From?
+#### Question 2 - Where Did the Data Come From?
 I found this data when looking for average salaries for a certain company. This data is provided by OECD which is an organization that works on establishing evidence-based international standards and finding solutions to a range of social, economic and environmental challenges. The data is one of many indicators and provides numbers of salaries for a person in a country within a certain year. I found the data here: https://stats.oecd.org/index.aspx?queryid=54751.
 If you click on wealth and change the group to wealth per person this data will show up and I exported it into a csv file.
 
-##### Question 3 - Data Set Sample
+#### Question 3 - Data Set Sample
 ```{r individual_wealth_sample, echo=FALSE}
 kable(individual_wealth_sample)
 ```
 
-##### Question Four - Data Set Explanation
+#### Question Four - Data Set Explanation
 The Individual Wealth dataset contains data on individual wealth aggregated by country, income, and over time. Additional Information on the Individual Wealth column structure
 
 **Variable:** different means related to financial status within households, such as financial assets per household or wealth per person per household
@@ -87,7 +87,7 @@ The Individual Wealth dataset contains data on individual wealth aggregated by c
 
 ### Subsection 2.2 Summary Analysis
 
-##### Question 1. Descriptive Statistics and Central Tendency Measures
+#### Question 1. Descriptive Statistics and Central Tendency Measures
 For our Reddit Tech Salary Sheet, the main features we focused on was 
 salary in relation to highest level of education and gender. The first table below displays a summary of the central tendency members of tech salaries.
 
@@ -117,7 +117,7 @@ For the individual salaries dataset, the main feature we focused on was mean net
 |---|---|---|---|---|---|---|
 | Mean Net Wealth per Person | 16804 | 59751 | 103817 | 107560 | 142071 | 248812 |
 
-##### Question 2. Plot Illustrations
+#### Question 2. Plot Illustrations
 To determine the distribution of salaries, we first created a boxplot that displayed salary distribution based on gender for our Reddit Tech Dataset.
 
 ```{r gender_plot, echo=FALSE}
@@ -136,7 +136,7 @@ Our final boxplot displays distribution based on mean net wealth per person for 
 individual_plot
 ```
 
-##### Question 3. Significant Outliers Explanation and Analysis
+#### Question 3. Significant Outliers Explanation and Analysis
 In our datasets, the significant outliers we had was with our salaries. For both datasets, we had some salaries that were over one million dollars! We noticed that this data skewed our boxplots and decided to wrangle each dataframe to only include salaries that were less than 250,000 dollars. In the above boxplots, you can see how there are still some outliers close to the 250,000 dollar mark. Before eliminating all salaries above 250,000 dollars, there were far more outliers that made the actual box part of the plot nonexistant. Ultimately, choosing to wrangle our dataset made our boxplots actually readable in addition to making our future analysis more accurate. Additionally, for our tech salaries dataset, some of the salaries were not inputted. This was skewing our boxplots to have a minimum value of zero so we decided to wrangle this data set to only include salaries that were great than 10,000 dollars and to not include missing values.
 
 Another thing we experienced was for our tech salaries dataset, there were a lot of different types of education listed. We decided to only use the most common types of education and focus on recieving a High School Diploma, Bachelor's Degree, Master's Degree, or Doctorate.. 
@@ -154,6 +154,26 @@ The final thing worth mentioning for our tech salaries dataset was that of the o
 
 #### Question 1. Introduction and Explanation of Question
 The research question I want to answer is: does location affect the global wage gap both within and outside of the tech industry? In this question, I will be considering the global wage gap for men and women in general and the global wage gap for men and women in the tech industry. This will require me to analyze the gender wage differences between locations and career fields.
+
+#### Question 2 - Data Analysis Method
+
+#### Question 3 - Results of Analysis
+
+I created this table to represent the quantitiave results of my data analysis. The table represents how I specifically collected the average salary for men and women.
+
+| Gender | Salary |
+|---|---|
+| Male | 77737.52 |
+| Female | 71317.76 |
+
+I used the above table to guide me on creating the qualititative results of my data analysis. My bar graph compares the average salary of males and females.
+
+```{r lynzley_plot, echo=FALSE}
+lynzley_plot
+```
+
+#### Question 4 - Result Evaluation
+
 
 ### Locksley: Does education level affect the average compensation between different genders?
 

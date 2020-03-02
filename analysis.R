@@ -43,6 +43,7 @@ View(individual_wealth)
 # The summary of just tech salary is:
 tech_salary_shrunk <- tech_salary[tech_salary$Total.Base.Salary.in.2018..in.USD. < 250000, ]
 tech_salary_shrunk <- tech_salary_shrunk[tech_salary_shrunk$Total.Base.Salary.in.2018..in.USD. > 10000, ]
+tech_salary_shrunk <- tech_salary_shrunk[2:nrow(tech_salary_shrunk), ]
 
 summary(tech_salary_shrunk$Total.Base.Salary.in.2018..in.USD.)
 
@@ -101,6 +102,54 @@ individual_plot <- ggplot(data = individual_wealth_shrunk) +
     mapping = aes(x = Variable, y = Value),
     na.rm = TRUE
   )
+
+
+
+
+# Lynzley's Part 3
+
+# pull out gender and salary for from Reddit Tech Data
+tech_salary <- tech_salary %>%
+  select(
+    Total.Base.Salary.in.2018..in.USD.,
+    Gender
+  )
+
+individual_wealth <- individual_wealth[individual_wealth$Variable == "Mean net wealth per person (current prices)", ]
+
+# Seperate salaries into gender categories
+tech_salary_males <- tech_salary[tech_salary$Gender == "Male", ]
+tech_salary_females <- tech_salary[tech_salary$Gender == "Female", ]
+
+# find average salaries
+tech_salary_males_mean <- mean(tech_salary_males$Total.Base.Salary.in.2018..in.USD., na.rm = TRUE)
+tech_salary_males_mean <- round(tech_salary_males_mean, digits = 2)
+tech_salary_females_mean <- mean(tech_salary_females$Total.Base.Salary.in.2018..in.USD., na.rm = TRUE)
+tech_salary_females_mean <- round(tech_salary_females_mean, digits = 2)
+
+salary_means <- data.frame(
+  "gender" = c("Male", "Female"),
+  "salary" = c(77737.52, 71317.76)
+)
+View(salary_means)
+
+# creating scatterplot for visual analysis of gender global wage gap
+lynzley_plot <- ggplot(data = salary_means) +
+  geom_bar(aes(x = gender, y = salary), stat = "identity") +
+  ylim(0, 100000) +
+  labs(
+    title = "Average Salary by Gender",
+    x = "Gender",
+    y = "Salary"
+  )
+
+# data_country <- data.frame(country = c("China", "Germany", "UK", "US"), 
+#                            conversion_rate = c(0.001331558,0.062428188, 0.052612025, 0.037800687))
+# ggplot(data_country, aes(x=country,y = conversion_rate)) +geom_bar(stat = "identity")
+
+
+
+
 
 
 
@@ -183,3 +232,6 @@ locksley_plot <- ggplot(data = tech_salaries) +
     x = "Education Level",
     y = "Salary ($)"
   )
+
+
+
