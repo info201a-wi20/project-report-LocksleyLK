@@ -1,13 +1,18 @@
 ---
 title: "A Look At The Wage Gap"
-author: "Kaamna Rishi, Lynsley Kolakowski, Locksley Kolakowski, Group E4"
+author: "Kaamna Rishi, Lynzley Kolakowski, Locksley Kolakowski, Group E4"
 date: "2/26/2020"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+<<<<<<< HEAD
 source("section3.R")
+=======
+source("analysis.R")
+library("knitr")
+>>>>>>> 61f43c47ae499533af62a83510630bf0c4d20aa7
 ```
 
 ## Section 1. Problem Domain Description
@@ -17,6 +22,115 @@ The gender wage gap or pay gap is the average difference in salary for men and w
 
 ### Subsection 1.1 Analysis Questions
 Here we will be describing what questions we will be further exploring through our data wrangling in our future report on the wage gap.
+
+Kaamna:
+
+	**What is the difference between net income of an average person in the United States compared to a woman working for a Technology company in the U.S.?**
+I believe this question is important to understand the average income of a person regardless of gender in the United States compared to a woman’s income from a company that promises the most diversity and inclusion in their hiring and treatment of employees. This will help prove if Microsoft is an equal opportunity employer and is committed to equal pay amongst all genders.
+
+
+Lynzley:
+
+	**Does the gender wage gap differ between people working both within and outside of the tech industry in the United States?**
+I believe this question is important because it will help us understand if the job title correlates to the size of the gender wage gap, and if there are differences in the gender wage gap depending on whether individuals working in or outside of the tech industry. This will help prove if the wage gap is more prevalent in specific industries and if technology companies are really providing equal opportunities to people regardless of gender.
+
+
+Locksley:
+
+**Does education level affect the average compensation between different genders?**
+I believe this question is important because it can help indicate whether different education levels determine pay in the tech industry. This is really important because it can help future students planning on pursuing a career in technology make informed decisions on if making the monetary and time commitment to pursuing higher education will affect their compensation once they enter the industry. Furthermore, it will indicate whether men and women experience inequalities in their education level and compensation, hopefully providing evidence towards the gender pay gap.
+
+
+
+## Section 2. Data Description
+
+Here we will be further exloring and explaining our data sets and how we have chosen them, then we will wrangle and display an overview of our summary analysis.
+
+### Reddit Tech Data
+
+##### Question One
+The Reddit Tech Salary Sheet is a dataset detailing the salary, company, location, gender, and more of people who chose to share their information who work in the tech industry.
+
+##### Question Two
+The dataset was created from a user on Reddit, a social media website where the users stay anonymous. The user made the data set using  Google Sheets where anyone with the link could input information. I found the source and a csv to download from this link: https://www.reddit.com/r/sysadmin/comments/d2g4hm/reddit_tech_salary_sheet/, and you can view the dataset here: https://docs.google.com/spreadsheets/d/13icckT8wb2ME3FTzgGyokoCTQMU9kBMqQXvg0V3_x54/edit#gid=880492180. The most important thing to keep in mind with this dataset is since it was created through open contributions, it relies on the goodwill and honesty of the contributors to stay honest and accurate. Also, as more people add data, the current csv file we are using will become out of date.
+
+##### Question Three
+
+```{r tech_salary_sample, echo=FALSE}
+kable(tech_salary_sample)
+```
+
+##### Question Four
+The data in the Reddit Tech Salary Sheet contains individual responses to questions including salary, work experience, role, and aspect of the tech industry they work in. Additional information on the Reddit Tech Salary Sheet column structure:
+
+*Timestamp: When that individual row of data was recorded and added to the dataset
+
+*Industry in Company: Specifies what branch of technology that the company focuses on (such as software, medical engineering, healthcare).
+
+*Years of Experience in Industry: listed as a range versus precise value (0-2, 2-5, 5-10, 10-20, 20+)
+
+*Years of Experience in Company: listed as a range versus precise value (0-2, 2-5, 5-10, 10-20, 20+)
+
+*Job Ladder: Allows respondents to further specify their role and what level of responsibility they in their job
+
+*Job Level: Some roles, like software engineers, have levels to indicate the experience and responsibility of that individual within their job title
+
+
+### OECD Wage Data
+
+##### Question One
+Data supplied by the Organization for Economic Co-Operation and Development (OECD) is specific to Employment information and the “Mean Net Wealth per Person” for countries around the world through the years of 2009-2016.
+
+
+##### Question Two
+I found this data when looking for average salaries for a certain company. This data is provided by OECD which is an organization that works on establishing evidence-based international standards and finding solutions to a range of social, economic and environmental challenges. The data is one of many indicators and provides numbers of salaries for a person in a country within a certain year. I found the data here: https://stats.oecd.org/index.aspx?queryid=54751.
+If you click on wealth and change the group to wealth per person this data will show up and I exported it into a csv file.
+
+##### Question Three
+
+```{r individual_wealth_sample, echo=FALSE}
+kable(individual_wealth_sample)
+```
+
+##### Question Four
+The Individual Wealth dataset contains data on individual wealth aggregated by country, income, and over time. Additional Information on the Individual Wealth column structure
+
+*Variable: different means related to financial status within households, such as financial assets per household or wealth per person per household
+
+*Value: The value of individual wealth in the household
+
+
+### Subsection 2.2 Summary Analysis
+
+| Major Feature | Min | 1st Qu. | Median | Mean | 3rd Qu. | Max |
+|---|---|---|---|---|---|---|
+| Tech Salary | 10300 | 50000 | 70000 | 75744 | 95000 | 245000 |
+
+| Major Feature | Min | 1st Qu. | Median | Mean | 3rd Qu. | Max |
+|---|---|---|---|---|---|---|
+| Male Tech Salary | 10300 | 50000 | 69500 | 75770 | 95000 | 245000 |
+| Female Tech Salary | 10500 | 52000 | 68000 | 73449 | 95000 | 175000 |
+
+| Major Feature | Min | 1st Qu. | Median | Mean | 3rd Qu. | Max |
+|---|---|---|---|---|---|---|
+| High School Diploma | 10300 | 48875 | 68000 | 74828 | 95000 | 230000 |
+| Trade School | 11500 | 44702 | 60000 | 63611 | 76000 | 210000 |
+| Technichal Certifications | 10500 | 44000 | 60000 | 66855 | 84000 | 220000 |
+| Associate Degree | 22000 | 45525 | 60000 | 64199 | 78000 | 145000 |
+| Bachelor Degree | 10500 | 55000 | 75000 | 81075 | 100000 | 245000 |
+| Master Degree | 10451 | 46000 | 70000 | 76416 | 100000 | 237000 |
+| Doctorate | 27000 | 68500 | 125000 | 114909 | 147500 | 240000 |
+
+
+## Section 3: Specific Question Analyses
+
+### Kaamna: What is the difference between net income of an average person in the United States compared to a woman working for a Technology company in the U.S.?
+
+
+### Lynzley: Does location affect the global wage gap both within and outside of the tech industry?
+
+
+=======
 
 Kaamna:
 
@@ -98,6 +212,10 @@ When we graph and wrangle this data we can visualize and answer the question to 
 is $204413.17. We can calculate that there is a 86,913.17 dollar amount difference. This number is seen in our plot as the columns show a difference in length, that the amount of money women make working for the technology industry is less than what an average American makes. This data can show us that the gender wage gap is a living reality, and to think in a booming industry where women are a minority making higher than average salary in the technological industry, but not enough more than an average person in the public. This is a visual of the gender bias and inequality that still exists in the United States to this day and even in growing industries where diversity is coined to making a difference. The reality is that there is still a wage gap that is systematically affecting women for equal amounts of work they are doing compared to their co-workers. Realizing this inequality down to the numbers, we can move to a future where we are being transparent about our salaries so we can identify when women are systematically being paid less and women can have the place necessary to be vocal about the money they need to be paid for the quality work.  
 
 ### Lynzley: Does location affect the global wage gap both within and outside of the tech industry?
+
+
+#### Question One
+The research question I want to answer is: does location affect the global wage gap both within and outside of the tech industry? In this question, I will be considering the global wage gap for men and women in general and the global wage gap for men and women in the tech industry. This will require me to analyze the gender wage differences between locations and career fields.
 
 
 ### Locksley: Does education level affect the average compensation between different genders?

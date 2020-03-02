@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ####################################################
 ######## Kaamna's Section Three, Question 3 + 4 ####
 ####################################################
@@ -77,3 +78,14 @@ net_income_usa <- ggplot() +
 ####################################################
 
 
+=======
+# install.packages("ggplot2")
+library("ggplot2")
+# install.packages("dplyr")
+library("dplyr")
+# install.packages("tidyr")
+library("tidyr")
+
+tech_salary <- read.csv("reddit_tech_salary_sheet.csv", stringsAsFactors = FALSE)
+individual_wealth <- read.csv("individual wealth.csv", stringsAsFactors = FALSE)
+>>>>>>> 61f43c47ae499533af62a83510630bf0c4d20aa7
